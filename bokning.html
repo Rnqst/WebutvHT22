@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"> 
+  <title>Enkelt formul&auml;r</title>
+  <script> 
+     function validbana() {
+        let namn = document.forms["bokning"]["Namn"].value;
+        if ( namn == "ditt namn" ) {
+           alert("Du m&aring;ste tala om vad du heter");
+           return false;
+        }
+        
+        let medlem = document.forms["bokning"]["MedlNr"].value;
+        if ( medlem == "ditt medlemsid" ) {
+           alert("Tala med klubbens sekreterare s&auml; kan du enkelt bli medlem");
+           return false;
+        }
+     } 
+  </script>
+</head>
+
+<body>
+  <h1>Bokning</h1>
+  <form name="bokning" onsubmit="return validbana()" method="post">
+    <br>
+    <h2>Anv&auml;ndare</h2>
+    <p>
+      <table>
+        <tr>
+          <td><label for="namn">Bokarens namn&nbsp;</label></td>
+          <td>&nbsp;</td>
+          <td><input type="text" id="Namn" name="PersonNamn" value="ditt namn"></td>
+        </tr>
+        <tr>
+          <td><label for="medid">Medlemsid</label></td>
+          <td>&nbsp;</td>
+          <td><input type="text" id="medlnr" name="MedlNr" value="ditt medlemsid"></td>
+        </tr>
+      </table>
+    </p>
+    <br>
+    <h2>Bana</h2>
+    <p>
+      <input type="checkbox" id="Enkelbana" name="Enkelb" value="Enkel">
+      <label for="enkel">Enkelbana</label><br>
+      <input type="checkbox" id="Dubbelbana" name="Dubbelb" value="Dubbel">
+      <label for="dubbel">Dubbelbana</label><br>
+      <input type="checkbox" id="Gräs" name="Graes" value="Gräs">
+      <label for="graes">Gr&auml;sbana</label>
+    </p>
+    <br>
+    <h2>Omkl&auml;dningsrum</h2>
+    <p>
+      <input type="checkbox" id="omkladherr" name="HerrOmklädningsrum" value="Herr">
+      <label for="herr">Herr</label><br>
+      <input type="checkbox" id="omkladdam" name="DamOmklädningsrum" value="Dam">
+      <label for="dam">Dam</label><br>
+      <input type="checkbox" id="Bastu" name="Sauna" value="Bastu">
+      <label for="bastu">Bastu</label>
+    </p>
+    <br>
+    <input type="submit" value="Submit">
+  </form> 
+  </p>
+</body>
+
+</html>
