@@ -1,0 +1,133 @@
+<!-- Exemplet ursprungligen från W3Schools
+     här modifierad för att använda W3.css
+     W3Schools eget alternativ till Bootstrap -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>W3School modifierad med W3.css</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      * {
+          box-sizing: border-box;
+      }
+
+/*
+ * matchar det som följer klassen row
+ */      
+      .row::after {
+          content: "";
+          clear: both;
+          display: table;
+      }
+
+/*
+ * matchar alla classer med namn som börjar med "col-"
+ */      
+      [class*="col-"] {
+          float: left;
+          padding: 15px;
+      }
+
+      .header {
+          background-color: grey;
+          color: black;
+          padding: 15px;
+      }
+
+      .menu ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      .menu li {
+          padding: 8px;
+          margin-bottom: 7px;
+          background-color: grey;
+          color: white;
+      }
+
+      .menu li:hover {
+          background-color: blue;
+      }
+
+      .aside {
+          background-color: grey;
+          padding: 15px;
+          color: white;
+          text-align: center;
+          font-size: 14px;
+      }
+
+      .footer {
+          background-color: grey;
+          color: white;
+          text-align: center;
+          font-size: 16px;
+          padding: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>En enkel adaptiv sida</h1>
+      <p style="color:white;"x>Med tre kolumner<br>nu med W3.css</p>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 menu">
+	<ul>
+	  <li>En fin</li>
+	  <li>Adaptiv och</li>
+	  <li>Enkel webbsida</li>
+	  <li>Utan koola funktioner</li>
+	</ul>
+      </div>
+
+      <div class="col-sm-4">
+	<h1>Ursprung</h1>
+	<p>
+	  Det här W3Schools exempel från början:<br>
+	  <a href="https://www.w3schools.com/css/css_rwd_intro.asp">Kurs med originalsidan</a><br>
+	</p>
+	<p>
+	  Här ytterligare nerskalad och kommenterad.<br>
+	  Dessutom modifierad för att använda W3Schools alternativ till Bootstrap, W3.css.
+	</p>
+	<p>
+	  W3Schools lär dig att använda W3.css här:<br>
+	  <a href="https://www.w3schools.com/w3css/defaulT.asp">W3.CSS Tutorial</a><br>
+	  Per default får du en responsiv sida, det finns en massa färdiga stilmallar för<br>
+	  olika typer av saker man skulle kunna vilja visa på en sida. Men vi har bara<br>
+	  flyttat över sidan till ett annat ramverk utan att använda andra funktioner<br>
+	  än de vi redan utnyttjade tidigare.<br>
+	  Det samma gäller för övrigt för migreringen från ursprungssidan till Bootstrap<br>
+	  i det förra steget.<br>
+	  Å andra sidan ändrades inte sidans utseende nämnvärt mellan versionerna här.
+	</p>
+	<p>
+	  W3Schools har färdiga mallar för den som snabbt vill komma igång:<br>
+	  <a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3.CSS Website Templates</a>
+	</p>
+      </div>
+
+      <div class="col-sm-4">
+	<div class="aside">
+	  <h2>Hur?</h2>
+	  <p>Med W3.css.</p>
+	  <h2>Var?</h2>
+	  <p>Från <a href="https://www.w3schools.com/css/css_rwd_intro.asp">W3Schools original.</a></p>
+	  <h2>Sidan skalar om</h2>
+	  <p>Enligt default-regler i W3.css</p>
+	</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Ändra storleken på ditt webbläsarfönster för att se hur det fungerar</p>
+    </div>
+  </body>
+</html>

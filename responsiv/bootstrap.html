@@ -1,0 +1,124 @@
+<!-- Exemplet ursprungligen från w3schools
+     här modifierad för att använda bootstrap -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>W3School modifierad med bootstrap</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+      * {
+          box-sizing: border-box;
+      }
+
+/*
+ * matchar det som följer klassen row
+ */      
+      .row::after {
+          content: "";
+          clear: both;
+          display: table;
+      }
+
+/*
+ * matchar alla classer med namn som börjar med "col-"
+ */      
+      [class*="col-"] {
+          float: left;
+          padding: 15px;
+      }
+
+      .header {
+          background-color: grey;
+          color: black;
+          padding: 15px;
+      }
+
+      .menu ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      .menu li {
+          padding: 8px;
+          margin-bottom: 7px;
+          background-color: grey;
+          color: white;
+      }
+
+      .menu li:hover {
+          background-color: blue;
+      }
+
+      .aside {
+          background-color: grey;
+          padding: 15px;
+          color: white;
+          text-align: center;
+          font-size: 14px;
+      }
+
+      .footer {
+          background-color: grey;
+          color: white;
+          text-align: center;
+          font-size: 16px;
+          padding: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>En enkel adaptiv sida</h1>
+      <p style="color:white;"x>Med tre kolumner<br>nu med bootstrap</p>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 menu">
+	<ul>
+	  <li>En fin</li>
+	  <li>Adaptiv och</li>
+	  <li>Enkel webbsida</li>
+	  <li>Utan koola funktioner</li>
+	</ul>
+      </div>
+
+      <div class="col-sm-4">
+	<h1>Ursprung</h1>
+	<p>
+	  Det här W3Schools exempel från början:<br>
+	  <a href="https://www.w3schools.com/css/css_rwd_intro.asp">Kurs med originalsidan</a><br>
+	</p>
+	<p>
+	  Här ytterligare nerskalad och kommenterad.<br>
+	  Dessutom modifierad för att använda Bootstrap.<br>
+	</p>
+	<p>
+	  W3Schools lär dig att använda Bootstrap här:<br>
+	  <a href="https://www.w3schools.com/bootstrap/">Bootstrap 3 Tutorial</a>
+	</p>
+      </div>
+
+      <div class="col-sm-4">
+	<div class="aside">
+	  <h2>Hur?</h2>
+	  <p>Med Bootstrap.</p>
+	  <h2>Var?</h2>
+	  <p>Från <a href="https://www.w3schools.com/css/css_rwd_intro.asp">W3Schools original.</a></p>
+	  <h2>Sidan skalar om</h2>
+	  <p>Enligt default-regler i Bootstrap</p>
+	</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Ändra storleken på ditt webbläsarfönster för att se hur det fungerar</p>
+    </div>
+  </body>
+</html>
