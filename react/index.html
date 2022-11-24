@@ -1,0 +1,193 @@
+<!-- Exemplet ursprungligen från w3schools -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>W3School fast med lite react</title>
+    <style>
+      * {
+          box-sizing: border-box;
+      }
+
+/*
+ * matchar det som följer klassen row
+ */      
+      .row::after {
+          content: "";
+          clear: both;
+          display: table;
+      }
+
+/*
+ * matchar alla classer med namn som börjar med "col-"
+ */      
+      [class*="col-"] {
+          float: left;
+          padding: 15px;
+      }
+
+      .header {
+          background-color: grey;
+          color: black;
+          padding: 15px;
+      }
+
+      .menu ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      .menu li {
+          padding: 8px;
+          margin-bottom: 7px;
+          background-color: grey;
+          color: white;
+      }
+
+      .menu li:hover {
+          background-color: blue;
+      }
+
+      .aside {
+          background-color: grey;
+          padding: 15px;
+          color: white;
+          text-align: center;
+          font-size: 14px;
+      }
+
+      .footer {
+          background-color: grey;
+          color: white;
+          text-align: center;
+          font-size: 16px;
+          padding: 15px;
+      }
+
+      /* For mobile phones: */
+      [class*="col-"] {
+          width: 100%;
+      }
+
+/*
+ * CSS @media ställer in specifika saker vid angiven
+ * skärmstorlek
+ * https://www.w3schools.com/cssref/css3_pr_mediaquery.php
+ *
+ * W3Schools använder tre klasser för att definiera bredden
+ * på mobilskärmar (ner till 600px)
+ * och två klasser för fönster på skrivbordet (eftersom vi
+ * enkelt justerar vebbläsarfönstrets bredd på en riktig
+ * dator så är det inte skärmbredden som är det viktiga här
+ * utan fönstrets bredd, på mobiler och paddor fyller ju apparna
+ * upp hela skärmen i normalfallet.
+ *
+ * Som du ser när vi ändrar storleken på webbläsarfönster så
+ * har vi två brytpunkter där vi skalar om innehållet i fönstret
+ * Detta motsvaras av två @media nedan, en för 768px och mindra
+ * och den andra tar vid när skärmen blir smalare än 600px.
+ * Fler steg är möjligt att definiera.
+ */      
+      @media only screen and (min-width: 600px) {
+          /* For tablets: */
+          .col-s-3 {width: 25%;}
+          .col-s-9 {width: 75%;}
+          .col-s-12 {width: 100%;}
+      }
+
+      @media only screen and (min-width: 768px) {
+          /* For desktop: */
+          .col-3 {width: 25%;}
+          .col-6 {width: 50%;}
+      }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>En enkel adaptiv sida</h1>
+      <p style="color:white;"x>Med tre kolumner<br>nu även med React</p>
+    </div>
+    <div class="row">
+      <div id="reactmeny"></div>
+
+<!--  här tillhör alltså div-elementet två olika klasser
+      den första för "riktiga" datorer och den andra för mobiler.
+
+      sidan kan bli svår att förstå och underhålla om du har många
+      klasser per tag -->
+      <div class="col-6 col-s-9">
+	      <h1>Ursprung</h1>
+	      <p>
+	        Det här W3Schools exempel från början:<br>
+	        <a href="https://www.w3schools.com/css/css_rwd_intro.asp">Kurs med originalsidan</a><br>
+	        Den här översiktliga genomgången kan vara nyttig med:<br>
+	        <a href="https://www.w3schools.com/html/html_responsive.asp">HTML Responsive Web Design</a><br>
+	      </p>
+	      <p>
+	        Sidan här ytterligare nerskalad och kommenterad jämfört med originalet.<br>
+	      </p>
+	      <p>
+	        Som du ser använder vi &lt;div&gt; här, inga konstigheter. Titta på W3Schools kurs
+	        i länken ovan om du behöver ytterligare tips.
+	      </p>
+	      <p>
+	        Glöm inte bort att kolla in W3Schools som har färdiga layouter,
+	        färdiga grundlayouter för en responsiva sidor, du behöver
+	        bara ta en och piffa till den med lite ögongodis och hälla in dina
+	        funktioner och ditt material så har du en fin sida:<br>
+	        <a href="https://www.w3schools.com/css/css_templates.asp">
+	          CSS Layout Templates
+	        </a>
+	      </p>
+      </div>
+
+      <div class="col-3 col-s-12">
+	      <div class="aside">
+	        <h2>Hur?</h2>
+	        <p>Med CSS och &lt;div&gt;-block.</p>
+	        <h2>Var?</h2>
+	        <p>Från <a href="https://www.w3schools.com/css/css_rwd_intro.asp">W3Schools.</a></p>
+	        <h2>Sidan skalar om</h2>
+	        <p>när skärmen blir smalare än 768px</p>
+	        <p>och vid 600px</p>
+	      </div>
+      </div>
+    </div>
+
+
+<!-- meny fast via react -->
+    <!-- här gör vi menyn via filen knappar.js -->
+    <script type='text/babel'>
+      /* För att React enkelt skall kunna hantera elementen
+       * vi vill använda, definierar vi dem i React i stället
+       * för direkt i html-delen längre upp.
+       * React har en egen intern DOM vars syfte är att
+       * React själv skall veta vilka objekt som skall uppdateras.
+       * Vi kan lägga till element från webbläsarens DOM för
+       * att senare använda dem, men detta brukar inte
+       * rekomenderas.
+       */
+      const menytag = (
+        <div class={"col-3 col-s-3 menu"}>
+          <ul>
+            <li>React 1</li>
+	          <li>React 2</li>
+	          <li>React 3</li>
+	          <li>React 4</li>
+	        </ul>
+        </div>
+      )
+
+      ReactDOM.render(menytag, document.getElementById('reactmeny'));
+    </script>
+    <div class="footer">
+      <p>Ändra storleken på ditt webbläsarfönster för att se hur det fungerar</p>
+    </div>
+  </body>
+</html>
