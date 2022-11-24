@@ -1,0 +1,139 @@
+<!-- Exemplet ursprungligen från w3schools -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>W3School fast med lite react</title>
+    <style>
+      * {
+          box-sizing: border-box;
+      }
+
+/*
+ * matchar det som följer klassen row
+ */      
+      .row::after {
+          content: "";
+          clear: both;
+          display: table;
+      }
+
+/*
+ * matchar alla classer med namn som börjar med "col-"
+ */      
+      [class*="col-"] {
+          float: left;
+          padding: 15px;
+      }
+
+      .header {
+          background-color: grey;
+          color: black;
+          padding: 15px;
+      }
+
+      .menu ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      .menu li {
+          padding: 8px;
+          margin-bottom: 7px;
+          background-color: grey;
+          color: white;
+      }
+
+      .menu li:hover {
+          background-color: blue;
+      }
+
+      .aside {
+          background-color: grey;
+          padding: 15px;
+          color: white;
+          text-align: center;
+          font-size: 14px;
+      }
+
+      .footer {
+          background-color: grey;
+          color: white;
+          text-align: center;
+          font-size: 16px;
+          padding: 15px;
+      }
+
+      /* For mobile phones: */
+      [class*="col-"] {
+          width: 100%;
+      }
+
+/*
+ * CSS @media ställer in specifika saker vid angiven
+ * skärmstorlek
+ * https://www.w3schools.com/cssref/css3_pr_mediaquery.php
+ *
+ * W3Schools använder tre klasser för att definiera bredden
+ * på mobilskärmar (ner till 600px)
+ * och två klasser för fönster på skrivbordet (eftersom vi
+ * enkelt justerar vebbläsarfönstrets bredd på en riktig
+ * dator så är det inte skärmbredden som är det viktiga här
+ * utan fönstrets bredd, på mobiler och paddor fyller ju apparna
+ * upp hela skärmen i normalfallet.
+ *
+ * Som du ser när vi ändrar storleken på webbläsarfönster så
+ * har vi två brytpunkter där vi skalar om innehållet i fönstret
+ * Detta motsvaras av två @media nedan, en för 768px och mindra
+ * och den andra tar vid när skärmen blir smalare än 600px.
+ * Fler steg är möjligt att definiera.
+ */      
+      @media only screen and (min-width: 600px) {
+          /* For tablets: */
+          .col-s-3 {width: 25%;}
+          .col-s-9 {width: 75%;}
+          .col-s-12 {width: 100%;}
+      }
+
+      @media only screen and (min-width: 768px) {
+          /* For desktop: */
+          .col-3 {width: 25%;}
+          .col-6 {width: 50%;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>En trivial sida</h1>
+    </div>
+
+    <div class="col-3 col-s-3 menu">
+        <ul>
+            <li id="knapp1">Doom 1</li>
+            <li id="knapp2">Doom 2</li>
+            <li id="knapp3">Doom 3</li>
+        </ul>
+    </div>
+  <script type="text/javascript">
+    // vi ändrar ett element, knapp1
+    const knapp1 = document.getElementById("knapp1");
+    knapp1.innerHTML = 'tetris';
+
+    // vi gör att knapp2 ändras vid klick
+    const knapp2 = document.getElementById("knapp2");
+    knapp2.onclick = function() { knapp2.innerHTML = 'packman';} 
+
+    // vi återställer knapparna ovan med den tredje knappen
+    const knapp3 = document.getElementById("knapp3");
+    knapp3.onclick = function() {
+        knapp1.innerHTML = 'doom 1';
+        knapp2.innerHTML = 'doom 2';
+    }
+  </script>
+
+
+  </body>
+</html>
