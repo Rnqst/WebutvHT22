@@ -1,0 +1,202 @@
+<!-- Exemplet ursprungligen från w3schools -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>W3School fast med lite react</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+/*
+ * matchar det som följer klassen row
+ */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+/*
+ * matchar alla classer med namn som börjar med "col-"
+ */
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        .header {
+            background-color: grey;
+            color: black;
+            padding: 15px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: grey;
+            color: white;
+        }
+
+        .menu li:hover {
+            background-color: blue;
+        }
+
+        .aside {
+            background-color: grey;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer {
+            background-color: grey;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            padding: 15px;
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+/*
+ * CSS @media ställer in specifika saker vid angiven
+ * skärmstorlek
+ * https://www.w3schools.com/cssref/css3_pr_mediaquery.php
+ *
+ * W3Schools använder tre klasser för att definiera bredden
+ * på mobilskärmar (ner till 600px)
+ * och två klasser för fönster på skrivbordet (eftersom vi
+ * enkelt justerar vebbläsarfönstrets bredd på en riktig
+ * dator så är det inte skärmbredden som är det viktiga här
+ * utan fönstrets bredd, på mobiler och paddor fyller ju apparna
+ * upp hela skärmen i normalfallet.
+ *
+ * Som du ser när vi ändrar storleken på webbläsarfönster så
+ * har vi två brytpunkter där vi skalar om innehållet i fönstret
+ * Detta motsvaras av två @media nedan, en för 768px och mindra
+ * och den andra tar vid när skärmen blir smalare än 600px.
+ * Fler steg är möjligt att definiera.
+ */
+        @media only screen and (min-width: 600px) {
+
+            /* For tablets: */
+            .col-s-3 {
+                width: 25%;
+            }
+
+            .col-s-9 {
+                width: 75%;
+            }
+
+            .col-s-12 {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            /* For desktop: */
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>En sida med canvas</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-3 col-s-3 menu">
+            <canvas id="rit" width="250" height="300" style="border:1px solid #000000;"></canvas>
+        </div>
+        <div class="col-6 col-s-9">
+            <h1>Vad gör vi här?</h1>
+            <p>
+                Vi har rityta, en så kallad canvas,
+                med javascript kan vi enkelt rita där.<br>
+                den<br>
+                den
+            </p>
+            <a href="https://www.w3schools.com/html/html5_canvas.asp">Förklaring här på w3schools</a><br>
+            <a href="https://www.w3schools.com/graphics/canvas_intro.asp">Snabbkurs också på w3schools</a><br>
+            <a href="https://www.w3schools.com/js/js_timing.asp">såhär tar du hand om tiden i javascript</a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+       var c = document.getElementById("rit");
+       var ctx = c.getContext("2d");
+       const ox = 125; // origo x-led
+       const oy = 150; // origo y-led
+       let x = ox;
+       let nx = ox;
+       let y = oy;
+       let ny = oy;
+       let diameter = 100;
+       ctx.moveTo(50, 100);
+       ctx.lineTo(150, 200);
+       ctx.stroke();
+
+       function ritaTavla() {
+         ctx.beginPath();
+         ctx.arc(ox, oy, diameter, 0, 2*Math.PI);
+         ctx.fillStyle = "grey";
+         ctx.fill();
+       }
+       ritaTavla();
+/*       
+       function ritaMarkeringar() {
+         for (i=0; i<12; i++) {
+            ctx.moveTo(ox, oy);
+            ctx.lineTo()
+         }
+       }
+/*
+       function ritaSekund() {
+          ctx.moveTo(ox,oy);
+          if (y == oy) {
+             y = 0;
+             ctx.lineTo(ox+50, oy+50)
+             ctx.stroke()
+          } else {
+            y = oy;
+            ctx.
+          }
+       }
+*/
+       function ritaMinut() {
+
+       }
+       function ritaTimme() {
+
+       }
+
+       // javascript timer
+       // https://www.w3schools.com/js/js_timing.asp
+       // setInterval(ritaSekund, 1000);
+
+    </script>
+</body>
+
+</html>
